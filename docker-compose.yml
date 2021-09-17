@@ -1,0 +1,18 @@
+# This dockerfile starts all dependencies that are required to run tests locally.
+#
+version: "3.7"
+volumes:
+  mssql_data: {}
+services:
+  sqlserverService:  
+    image: mcr.microsoft.com/mssql/server:2017-latest 
+    hostname: 'sqlserver'  
+    environment:  
+      ACCEPT_EULA: Y  
+      SA_PASSWORD: "Az1234567"  
+    volumes:  
+      - ~/data/mssql:/var/opt/mssql3  
+    ports:  
+      - '1433:1433'  
+    expose:  
+      - 1433  
